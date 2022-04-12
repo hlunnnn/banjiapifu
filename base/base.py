@@ -1,6 +1,4 @@
 import time
-
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -24,6 +22,9 @@ class Base:
             log.error("错误:{}".format(e))
             raise e
 
+
+    def base_get(self,args):
+        self.driver.get(args)
 
     def base_click(self,args):
         log.info("[base]: 开始对:{}元素实行点击事件".format(args))
