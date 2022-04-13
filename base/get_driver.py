@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 class GetDriver:
@@ -6,7 +7,11 @@ class GetDriver:
 
     @classmethod
     def get_driver(cls):
+        # 配置
+        ch_options = Options()
+        ch_options.add_argument("--headless")  # => 为Chrome配置无头模式
         if cls.driver is None:
+            # cls.driver = webdriver.Chrome(chrome_options=ch_options)
             cls.driver = webdriver.Chrome()
             cls.driver.maximize_window()
         return cls.driver
@@ -17,3 +22,4 @@ class GetDriver:
         if cls.driver:
             cls.driver.quit()
             cls.driver = None
+
